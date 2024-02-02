@@ -1,0 +1,26 @@
+#**********************************************************
+# FileNanme : makefile
+# Author    : ZhaoPeng
+# Time      : 2024-02-02 11:11:31
+# Discribe  : 
+#----------------------copyright 2023----------------------
+#**********************************************************
+build_sc_obj = zio
+top_package = zio
+main_test = zioTest
+build_dir = zio_out
+
+
+.PHONY:
+
+test:
+	mill -i __.test
+
+sv:
+	mill -i $(build_sc_obj).runMain $(top_package).$(main_test) -td $(build_dir)
+
+clean:
+	rm -rf $(build_dir) 
+	mill clean
+
+
